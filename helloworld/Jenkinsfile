@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    stages {
+        stage('init') {
+            steps {
+								git branch: 'main', url: 'https://github.com/jackproudfoot-end/terraform-jenkins-test.git'
+            }
+        }
+				stage('terraform') {
+					steps {
+						dir('terraform-jenkins-test/helloworld') {
+							sh 'ls'
+							sh 'terraform init'
+						}
+					}
+				}
+    }
+}
