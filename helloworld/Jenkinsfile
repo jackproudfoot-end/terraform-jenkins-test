@@ -8,9 +8,11 @@ pipeline {
         }
 				stage('terraform') {
 					steps {
+						sh 'ls'
 						dir('terraform-jenkins-test/helloworld') {
 							sh 'pwd'
 							sh 'terraform init'
+							sh 'ls'
 							sh 'terraform plan'
 							sh 'ls'
 						}
