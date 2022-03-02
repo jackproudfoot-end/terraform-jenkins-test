@@ -16,7 +16,7 @@ pipeline {
 								sh 'terraform init'
 								sh 'ls'
 								sh 'terraform plan'
-								sh 'ls''
+								sh 'ls'
 							}
 						}
 					}
