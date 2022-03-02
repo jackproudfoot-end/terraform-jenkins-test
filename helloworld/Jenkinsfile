@@ -9,7 +9,7 @@ pipeline {
 				stage('terraform') {
 					steps {
 						sh 'ls'
-						dir('terraform-jenkins-test/helloworld/') {
+						dir('terraform-jenkins-test') {
 							sh 'pwd'
 							sh 'terraform init'
 							sh 'ls'
