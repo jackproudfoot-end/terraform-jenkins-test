@@ -3,13 +3,13 @@ pipeline {
     stages {
         stage('init') {
             steps {
-								git branch: 'main', url: 'https://github.com/jackproudfoot-end/terraform-jenkins-test.git'
+								git branch: 'pipeline', url: 'https://github.com/jackproudfoot-end/terraform-jenkins-test.git'
             }
         }
 				stage('terraform') {
 					steps {
 						sh 'ls'
-						dir('terraform-jenkins-test/helloworld') {
+						dir('terraform-jenkins-test/helloworld/') {
 							sh 'pwd'
 							sh 'terraform init'
 							sh 'ls'
