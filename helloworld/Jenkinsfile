@@ -11,6 +11,8 @@ pipeline {
 						dir('terraform-jenkins-test/helloworld') {
 							sh 'pwd'
 							sh 'terraform init'
+							sh 'terraform plan'
+							sh 'ls'
 						}
 					}
 				}
