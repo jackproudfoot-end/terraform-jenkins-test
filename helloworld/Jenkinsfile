@@ -11,10 +11,12 @@ pipeline {
             steps {
 								sh 'ls'
 								git branch: "${params.GIT_BRANCH}", url: "${params.GIT_REPO}"
+								sh 'ls'
             }
         }
 				stage('terraform') {
 					steps {
+						echo "${params.GIT_REPO##*/}"
 						dir("${params.GIT_REPO}") {
 							sh 'terraform init'
 							sh 'terraform plan'
