@@ -2,8 +2,8 @@ pipeline {
     agent any
 
 		parameters {
-			string(name: GIT_REPO, description: 'Git repository', trim: true, defaultValue: 'https://github.com/jackproudfoot-end/terraform-hello-world.git')
-			string(name: GIT_BRANCH, description: 'Git branch', trim: true, defaultValue: 'main')
+			string(name: 'GIT_REPO', description: 'Git repository', trim: true, defaultValue: 'https://github.com/jackproudfoot-end/terraform-hello-world.git')
+			string(name: 'GIT_BRANCH', description: 'Git branch', trim: true, defaultValue: 'main')
 		}
 
     stages {
