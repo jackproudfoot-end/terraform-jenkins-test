@@ -18,6 +18,8 @@ pipeline {
 				stage('terraform') {
 					steps {
 						dir("${params.INFRA_PATH}") {
+							sh 'pwd'
+							sh 'ls'
 							sh 'terraform init'
 							sh 'terraform plan'
 						}
