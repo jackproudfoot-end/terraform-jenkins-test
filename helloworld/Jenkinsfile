@@ -3,21 +3,27 @@ pipeline {
     stages {
         stage('init') {
             steps {
-								echo "skipping"
+								sh 'ls'
 								// git branch: 'pipeline', url: 'https://github.com/jackproudfoot-end/terraform-jenkins-test.git'
             }
         }
-				stage('terraform') {
-					steps {
-						sh 'ls'
-						dir('helloworld') {
-							sh 'ls'
-							sh 'terraform init'
-							sh 'ls'
-							sh 'terraform plan'
-							sh 'ls'
-						}
-					}
-				}
+				// stage('terraform') {
+				// 	steps {
+				// 		sh 'ls'
+				// 		dir('helloworld') {
+				// 			sh 'ls'
+				// 			sh 'terraform init'
+				// 			sh 'ls'
+				// 			sh 'terraform plan'
+				// 			sh 'ls'
+				// 		}
+				// 	}
+				// }
     }
+
+		post {
+			cleanup {
+				cleanWs()
+			}
+		}
 }
