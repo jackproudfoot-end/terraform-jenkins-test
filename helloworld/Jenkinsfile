@@ -10,11 +10,14 @@ pipeline {
 					steps {
 						sh 'ls'
 						dir('terraform-jenkins-test') {
-							sh 'pwd'
-							sh 'terraform init'
 							sh 'ls'
-							sh 'terraform plan'
-							sh 'ls'
+							dir('helloworld') {
+								sh 'ls'
+								sh 'terraform init'
+								sh 'ls'
+								sh 'terraform plan'
+								sh 'ls''
+							}
 						}
 					}
 				}
