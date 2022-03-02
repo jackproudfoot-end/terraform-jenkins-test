@@ -2,8 +2,8 @@ pipeline {
     agent any
 
 		parameters {
-			string(GIT_REPO: 'Git repository', trim: true)
-			string(GIT_BRANCH: 'Git branch', trim: true)
+			string(name: GIT_REPO, description: 'Git repository', trim: true)
+			string(name: GIT_BRANCH, description: 'Git branch', trim: true)
 		}
 
     stages {
