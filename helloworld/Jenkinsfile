@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+		parameters {
+			string name: 'Git repository', trim: true
+			string branch: 'Git branch', trim: true
+		}
+
     stages {
         stage('init') {
             steps {
