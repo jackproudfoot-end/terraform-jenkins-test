@@ -13,7 +13,6 @@ pipeline {
 						dir('terraform-jenkins-test') {
 							sh 'ls'
 							dir('helloworld') {
-								sh 'git pull'
 								sh 'ls'
 								sh 'terraform init'
 								sh 'ls'
