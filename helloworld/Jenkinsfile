@@ -2,15 +2,15 @@ pipeline {
     agent any
 
 		parameters {
-			string name: 'Git repository', trim: true
-			string branch: 'Git branch', trim: true
+			string(GIT_REPO: 'Git repository', trim: true)
+			string(GIT_BRANCH: 'Git branch', trim: true)
 		}
 
     stages {
         stage('init') {
             steps {
 								sh 'ls'
-								// git branch: 'pipeline', url: 'https://github.com/jackproudfoot-end/terraform-jenkins-test.git'
+								git branch: "${params.GIT_BRANCH}", url: "${params.GIT_REPO}"
             }
         }
 				stage('terraform') {
