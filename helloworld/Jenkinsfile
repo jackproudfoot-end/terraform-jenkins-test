@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+		triggers {
+			githubPullRequests events: [Open(), commitChanged()], spec: '', triggerMode: 'HEAVY_HOOKS'
+		}
+
+
 		parameters {
 			string(name: 'GIT_REPO', description: 'Git repository', trim: true, defaultValue: 'https://github.com/jackproudfoot-end/terraform-hello-world.git')
 			string(name: 'GIT_BRANCH', description: 'Git branch', trim: true, defaultValue: 'main')
@@ -8,20 +13,19 @@ pipeline {
 		}
 
     stages {
-        stage('init') {
+        stage('Init') {
             steps {
 								sh 'ls'
 								git branch: "${params.GIT_BRANCH}", url: "${params.GIT_REPO}"
 								sh 'ls'
             }
         }
-				stage('terraform') {
+				stage('Plan') {
 					steps {
 						dir("${params.INFRA_PATH}") {
-							sh 'pwd'
-							sh 'ls'
-							sh 'terraform init'
-							sh 'terraform plan'
+							sh 'terraform init -input=false'
+							sh 'terraform plan -input=false -out tfplan'
+							sh 'terraform show -no-color tfplan'
 						}
 					}
 				}
